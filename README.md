@@ -1,9 +1,8 @@
-dpjs
+Design Patterns applied to Javascript
 ====
 
-This is some examples on how to implement design patterns into Javascript.
-Also this serves as an example of using Grunt for unit tests, throught the QUnit Grunt plugin
-
+These are some examples on how to implement design patterns into Javascript.
+Also, it serves as an example of how to  use Grunt for unit tests, throught the QUnit Grunt plugin
 
 ###After cloning the repo, run the following:
 
