@@ -2,7 +2,10 @@
 Composite pattern test
 ----------------------
 
-Is a partitioning design pattern. The composite pattern describes that a group of objects are to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly
+Is a partitioning design pattern. The composite pattern describes that a group of objects are to be treated in 
+the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree
+structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual 
+objects and compositions uniformly
 
 http://en.wikipedia.org/wiki/Composite_pattern
 */
@@ -27,6 +30,8 @@ Nd.prototype = {
     },
 
     print: function(pic) {
+        var buffer = '';
+
         if(!pic) {
             pic = 0;
         }
@@ -36,11 +41,13 @@ Nd.prototype = {
         var len = this.list.length,
             i = 0;
         
-        console.log(rep('-', pic) + this.name);
+        buffer += rep('-', pic) + this.name + '\n';
         
         for(i; i < len; i++) {
-            this.list[i].print(pic);
+            buffer += this.list[i].print(pic) + '\n';
         }
+
+        return buffer;
     }
 };
 
@@ -57,29 +64,6 @@ Lf.prototype = {
             buffer += k + ': ' + this.data[k];
         }
         
-        console.log(rep('-', pic+1) + buffer);
+        return rep('-', pic+1) + buffer;
     }
 };
-
-/****usage****
-In this case, the instances of Nd are behaving as folders,
-and instances of Lf are behaving as files, which are placed inside folders
-*/
-console.log('Starting composite sample...');
-var root = new Nd('root');
-var img = new Nd('img');
-var js = new Nd('js');
-var css = new Nd('css');
-css.add(img);
-var js = new Nd('js');
-
-root.add(css);
-root.add(js);
-root.add(new Lf({name: 'lerolero.txt'}));
-js.add(new Lf({name: 'app.js'}));
-js.add(new Lf({name: 'jquery.js'}));
-img.add(new Lf({name: 'logo.png'}));
-
-root.print();
-console.log('End of composite sample.');
-

@@ -6,7 +6,40 @@
 <body>
 
 
+<script type="text/javascript" src="qunit-1.12.0.js"></script>
 <script type="text/javascript" src="composite.js"></script>
 <script type="text/javascript" src="iterator.js"></script>
+<script type="text/javascript">
+
+/****composite pattern usage****
+In this case, the instances of Nd are behaving as folders,
+and instances of Lf are behaving as files, which are placed inside folders
+*/
+
+var root = new Nd('root');
+var img = new Nd('img');
+var js = new Nd('js');
+var css = new Nd('css');
+css.add(img);
+var js = new Nd('js');
+
+root.add(css);
+root.add(js);
+root.add(new Lf({name: 'lerolero.txt'}));
+js.add(new Lf({name: 'app.js'}));
+js.add(new Lf({name: 'jquery.js'}));
+img.add(new Lf({name: 'logo.png'}));
+
+var compositeResult = '-root--css---img----name:logo.png--js---name:app.js---name:jquery.js--name:lerolero.txt';
+
+test('composite result', function() {
+	equal(compositeResult, root.print().replace(/[ |\n]/g, ''));
+});
+
+
+
+</script>
+
+
 </body>
 </html>
