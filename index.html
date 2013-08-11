@@ -37,6 +37,20 @@ test('composite result', function() {
 });
 
 
+/****iterator pattern usage****/
+var arr = [1, null, undefined, false, 2];
+var it = iter(arr);
+
+module('Iterator pattern test');
+
+test('Iterating over [1, null, undefined, false, 2]', function() {
+	equal(1, it.next(), 'must be 1');
+	equal(null, it.next(), 'must be null');
+	equal(undefined, it.next(), 'must be undefined');
+	equal(false, it.next(), 'must be false');
+	equal(2, it.next(), 'must be 2');
+	throws(function(){it.next()}, /iteration/);
+});
 
 </script>
 

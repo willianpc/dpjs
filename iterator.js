@@ -18,14 +18,3 @@ function iter(obj) {
         next: next
     };
 }
-
-//testing
-console.log('Start iterator...');
-var arr = [1, null, undefined, false, 2, 3, 4, 5, 6, 7, 8, 9];
-var it = iter(arr);
-
-while(it.hasNext()) {
-    console.log(it.next());
-}
-
-console.log('End of iterator');
